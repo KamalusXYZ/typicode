@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Typicode</title>
 </head>
@@ -15,18 +15,22 @@
 
 
 
-    <h1>Application js</h1>
+
     <div id="app">
+        <h1>Liste des utilisateurs</h1>
+        <p>Il y a {{users.length}} utilisateurs</p>
 
-        <ul>
-            <li v-for="user of users">
-                {{user.name}}
 
-            </li>
+        <select v-on:change="displayUserData" v-model="userfocused">
+            <option :value="0">Selectionnez un utilisateur</option>
+            <option v-for="user of users" :value="user.id">{{user.name}}</option>
+        </select>
 
-        </ul>
+        <user-display :users="users" :userfocused="userfocused"></user-display>
 
     </div>
+
+
 
 </body>
 <script src="/js/app.js"></script>

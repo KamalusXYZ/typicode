@@ -1,11 +1,32 @@
-let vm = new Vue({
-  /*Création d'une instance de vue, et passage du code en option*/
-  el: '#app',
-  /*Sélecteur. Même syntaxe que le CSS*/
-  data: {
-    /*Données de l'application*/
+let userDisplay = {
 
-    users: []
+  template: `
+  <div>
+  
+  <div >
+    
+  
+    
+    
+  </div>
+
+
+  
+  </div>
+  
+  `,
+  props: ["users", "userfocused"]
+
+}
+
+let vm = new Vue({
+
+  el: '#app',
+
+  data: {
+
+    users: [],
+    userfocused: 0
 
   },
   created: function () {
@@ -28,7 +49,21 @@ let vm = new Vue({
           console.error('ERREUR', e)
         })
 
-    }
+    },
+
+    displayUserData: async function () {
+
+      let response = await fetch('https://jsonplaceholder.typicode.com/users/' + this.userfocused)
+      this.user = await response.json()
+
+
+
+    },
+
+  },
+  components: {
+
+    "user-display": userDisplay
   }
 
 
