@@ -15,7 +15,9 @@ let userDisplay = {
    </ul>
    <p> Adresse: {{user.address.street}}, {{user.address.suite}} {{user.address.city}}  {{user.address.zipcode}} </p>
    <p> Entreprise: {{user.company.name}}</p>
-    
+   
+   <input v-on:click="displayTask" type="submit" value="Voir les tâches">
+   
     
   </div>
 
@@ -24,7 +26,7 @@ let userDisplay = {
   </div>
   
   `,
-  props: ["users", "userfocused","user"]
+  props: ["users", "userfocused","user", "task", "taskactive"]
 
 }
 
@@ -35,7 +37,9 @@ let vm = new Vue({
   data: {
     user: [],
     users: [],
-    userfocused: 0
+    userfocused: 0,
+    task:[],
+    taskactive: false
 
   },
   created: function () {
@@ -67,8 +71,9 @@ let vm = new Vue({
 
       let response = await fetch('https://jsonplaceholder.typicode.com/users/' + this.userfocused)
       let user = this.user = await response.json()
-      console.log(user.name)
-      user.name
+      console.log(user)
+      
+      
 
 
 

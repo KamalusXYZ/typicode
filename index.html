@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script defer src="/js/app.js"></script>
     <title>Typicode</title>
 </head>
 
@@ -19,6 +20,7 @@
     <div id="app">
         <h1>Liste des utilisateurs</h1>
         <p>Il y a {{users.length}} utilisateurs</p>
+        
 
 
         <select v-on:change="displayUserData" v-model="userfocused">
@@ -26,13 +28,13 @@
             <option v-for="user of users" :value="user.id">{{user.name}}</option>
         </select>
 
-        <user-display :user="user" :users="users" :userfocused="userfocused"></user-display>
+        <user-display :user="user" :users="users" :userfocused="userfocused" :task="task" taskactive="taskactive"></user-display>
 
     </div>
 
 
 
 </body>
-<script src="/js/app.js"></script>
+
 
 </html>
