@@ -26,7 +26,7 @@
             <option v-for="user of users" :value="user.id">{{user.name}}</option>
         </select>
 
-        <user-display :users="users" :userfocused="userfocused"></user-display>
+        <user-display :user="user" :users="users" :userfocused="userfocused"></user-display>
 
     </div>
 
