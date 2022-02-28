@@ -3,7 +3,7 @@ let userDisplay = {
   template: `
   <div>
   
-  <div v-if="userfocused !== 0">
+  <div v-if="user.id">
     
   <h1> {{user.name}}({{user.username}})</h1>
    <p>Id: n°{{user.id}}</p>
@@ -26,7 +26,20 @@ let userDisplay = {
   </div>
   
   `,
-  props: ["users", "userfocused","user", "task", "taskactive"]
+  props: ["users", "userfocused","user", "task", "taskactive"],
+
+  data: function () {
+
+    return {
+
+      
+
+
+
+    }
+
+    
+  }
 
 }
 
@@ -67,11 +80,13 @@ let vm = new Vue({
 
     displayUserData: async function () {
 
-    
+      if (this.userfocused != 0) {
 
       let response = await fetch('https://jsonplaceholder.typicode.com/users/' + this.userfocused)
       let user = this.user = await response.json()
       console.log(user)
+    }
+    else this.user = []
       
       
 
